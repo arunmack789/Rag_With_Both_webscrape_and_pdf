@@ -8,7 +8,7 @@ Rag application
 #dependency install
 pip install torch --index-url https://download.pytorch.org/whl/cpu 
 
-pip install -r pip install -r requirements.txt
+pip install -r requirements.txt
 
 # run application
 python run.py (run this where run.py file is located) 
