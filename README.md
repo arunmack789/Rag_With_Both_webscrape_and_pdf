@@ -6,7 +6,6 @@ Rag application
 1.python 3.12
 
 #dependency install
-# i using cpu based 
 pip install torch --index-url https://download.pytorch.org/whl/cpu 
 pip install -r pip install -r requirements.txt
 
