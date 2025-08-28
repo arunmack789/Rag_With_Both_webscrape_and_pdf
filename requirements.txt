@@ -1,0 +1,9 @@
+gradio
+PyMuPDF
+numpy
+faiss-cpu
+sentence-transformers
+llama-cpp-python
+requests
+beautifulsoup4
+
