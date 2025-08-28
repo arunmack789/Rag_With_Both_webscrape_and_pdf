@@ -16,7 +16,7 @@ open terminal or cmd
 python run.py (run this where run.py file is located) 
 
 
-# open applciation 
+# open application 
 go to this ip address http://127.0.0.1:7860/ applciation running
 
 #upload data.pdf and for webscrape i used this  https://www.doozyrobotics.com/ 
