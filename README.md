@@ -1,0 +1,2 @@
+# Rag_With_Both_webscrape_and_pdf
+Rag application
