@@ -18,4 +18,6 @@ python run.py (run this where run.py file is located)
 # open applciation 
 go to this ip address http://127.0.0.1:7860/ applciation running
 
-#uplaod data.pdf and for webscrape i used this  https://www.doozyrobotics.com/ 
+#upload data.pdf and for webscrape i used this  https://www.doozyrobotics.com/ 
+#sample output 
+![Alt text](demo2.png)
