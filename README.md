@@ -28,3 +28,7 @@ go to this ip address http://127.0.0.1:7860/ applciation running
 ![Demo](sampleoutput.gif)
 
 
+#web scrape and pdf data are processed 
+![Alt text](dataprocess.png)
+
+
