@@ -24,5 +24,6 @@ go to this ip address http://127.0.0.1:7860/ applciation running
 ![Alt text](demo2.png)
 
 #video demo
-[Watch Demo](https://drive.google.com/file/d/17Gbqu8Xh2eVw1JzuAHJYUWxnXZI4_Kj-/view?usp=sharing)
+![Demo]()
+
 
