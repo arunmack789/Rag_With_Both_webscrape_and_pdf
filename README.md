@@ -13,6 +13,7 @@ pip install -r requirements.txt
 
 # run application
 open terminal or cmd 
+
 python run.py (run this where run.py file is located) 
 
 
