@@ -66,10 +66,10 @@ llm = Llama(
     n_threads=8,
 )
 
-def stream_llama(prompt, max_tokens=512):
+def stream_llama(prompt, max_tokens=512,temperature=0.1):
     """Yields Doozy's response token by token for real-time streaming."""
     text_so_far = ""
-    for token in llm(prompt, max_tokens=max_tokens, stream=True):
+    for token in llm(prompt, max_tokens=max_tokens,temperature=temperature,stream=True):
         new_text = token["choices"][0]["text"]
         text_so_far += new_text
         yield text_so_far
