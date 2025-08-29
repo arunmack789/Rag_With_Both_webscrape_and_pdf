@@ -66,10 +66,10 @@ llm = Llama(
     n_threads=8,
 )
 
-def stream_llama(prompt, max_tokens=512,temperature=0.1):
+def stream_llama(prompt, max_tokens=512,temperature=0):
     """Yields Doozy's response token by token for real-time streaming."""
     text_so_far = ""
-    for token in llm(prompt, max_tokens=max_tokens,temperature=temperature,stream=True):
+    for token in llm(prompt, max_tokens=max_tokens, stream=True,temperature=temperature):
         new_text = token["choices"][0]["text"]
         text_so_far += new_text
         yield text_so_far
@@ -77,9 +77,13 @@ def stream_llama(prompt, max_tokens=512,temperature=0.1):
 # === Chat function with streaming ===
 def chat_with_pdf_web_stream(message, chat_history, pdf_file, url, session_data):
     if chat_history is None or len(chat_history) == 0:
-        chat_history = [
-            {"role": "system", "content": "Hello! I am Doozy, your AI assistant. I can help you with questions using PDFs, web content, or general knowledge. How can I assist you today?"}
-        ]
+        chat_history = [{"role": "system", "content": "Hello! I am Doozy, your AI assistant..."}]
+
+    # Handle trivial greetings
+    if message.strip().lower() in {"hi", "hello", "hey","Hi"}:
+        chat_history.append({"role": "assistant", "content": "Hi there! Ask me something about your PDF or website."})
+        yield chat_history, chat_history
+        return
 
     # Load PDF if first time
     if pdf_file is not None and session_data.get("pdf_index") is None:
@@ -101,21 +105,17 @@ def chat_with_pdf_web_stream(message, chat_history, pdf_file, url, session_data)
         session_data["web_chunks"] = web_chunks
         chat_history.append({"role": "system", "content": f"Doozy has loaded the web page: {url}"})
 
-    # Append user message
     chat_history.append({"role": "user", "content": message})
 
-    # Collect relevant chunks
     pdf_relevant = retrieve(message, session_data["pdf_index"], session_data["pdf_chunks"]) if session_data.get("pdf_index") else []
     web_relevant = retrieve(message, session_data["web_index"], session_data["web_chunks"]) if session_data.get("web_index") else []
     combined_context = " ".join(pdf_relevant + web_relevant)
 
-    # Build prompt
     prompt = (
         f"You are Doozy, an AI assistant. Answer the question professionally using the context below.\n\n"
         f"Context:\n{combined_context}\n\nUser Question: {message}\nAnswer as Doozy:"
     )
 
-    # Stream response in real-time
     answer = ""
     for partial in stream_llama(prompt):
         answer = partial
