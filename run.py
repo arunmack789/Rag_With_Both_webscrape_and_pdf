@@ -81,7 +81,7 @@ def chat_with_pdf_web_stream(message, chat_history, pdf_file, url, session_data)
 
     # Handle trivial greetings
     if message.strip().lower() in {"hi", "hello", "hey","Hi"}:
-        chat_history.append({"role": "assistant", "content": "Hi there! Ask me something about your PDF or website."})
+        chat_history.append({"role": "assistant", "content": "Hi there! Ask me something about your from pdf or website."})
         yield chat_history, chat_history
         return
 
